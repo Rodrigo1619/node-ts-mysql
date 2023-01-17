@@ -19,5 +19,7 @@ Si nos da un error abrimos una powershell aparte y ejecutamos
 ## 9. tslint.json => rules
 solamente agregamos esta regla **"no-console": false** para que a la hora de hacer un sonsole.log no nos marque un error.
 
+## 10. Para correr en nodemon
+Ahora se tendran 2 consolas, donde correremos **nodemon dist/app.js** pero para no estar haciendo la compilacion de tsc siempre, en otra consola vamos a poner **tsc --watch**, ahora vamos a poder tener separados los entornos de desarrollo y ver si el que fallo fue nodemon o fue typescript
 
 
