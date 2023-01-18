@@ -1,6 +1,6 @@
 import express, {Application} from 'express';
-
-import userRoutes from '../routes/usuario.route'
+import userRoutes from '../routes/usuario.route';
+import cors from 'cors';
 
 class Server{
 
@@ -14,8 +14,20 @@ class Server{
         this.app = express();
         this.port = process.env.PORT || '8000'; //sino encuentra nuestra variable de entonrno haremos que siempre use el puerto 8000
         
-        //definimos las rutas
+        //Metodos iniciales
+        this.middlewares();
         this.routes();
+    }
+
+    middlewares(){
+        //configurando cors
+        this.app.use(cors());
+
+        //lectura del body, parseando el body
+        this.app.use(express.json());
+
+        //carpeta publica
+        this.app.use(express.static('public')); //para poder servir el sitio web de esa carpeta
     }
 
     routes(){
