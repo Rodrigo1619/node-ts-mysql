@@ -75,10 +75,22 @@ export const putUsuario = async(req: Request, res: Response)=>{
     }
 }
 
-export const deleteUsuario = (req: Request, res: Response)=>{
+export const deleteUsuario = async(req: Request, res: Response)=>{
     const {id} = req.params;
+
+    const usuario = await Usuario.findByPk(id);
+        if(!usuario){
+            return res.status(404).json({
+                msg: `No se encontro un usuario con el id ${id}`
+            })
+        }
+    
+        //await usuario.destroy(); //esto borra al usuario de la base de datos, depende nuestro escenario no es muy recomendable
+
+        await usuario.update({estado:false}) //nos pone nuestro estado de 1 a 0
+
     res.json({
-        msg: 'deleteUsuario',
-        id
+        msg: 'Usuario Borrado',
+        usuario
     })
 }

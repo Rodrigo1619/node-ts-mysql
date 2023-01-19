@@ -78,12 +78,20 @@ const putUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.putUsuario = putUsuario;
-const deleteUsuario = (req, res) => {
+const deleteUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
+    const usuario = yield usuario_model_1.default.findByPk(id);
+    if (!usuario) {
+        return res.status(404).json({
+            msg: `No se encontro un usuario con el id ${id}`
+        });
+    }
+    //await usuario.destroy(); //esto borra al usuario de la base de datos, depende nuestro escenario no es muy recomendable
+    yield usuario.update({ estado: false }); //nos pone nuestro estado de 1 a 0
     res.json({
-        msg: 'deleteUsuario',
-        id
+        msg: 'Usuario Borrado',
+        usuario
     });
-};
+});
 exports.deleteUsuario = deleteUsuario;
 //# sourceMappingURL=usuario.controller.js.map
