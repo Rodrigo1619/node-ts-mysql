@@ -22,4 +22,8 @@ solamente agregamos esta regla **"no-console": false** para que a la hora de hac
 ## 10. Para correr en nodemon
 Ahora se tendran 2 consolas, donde correremos **nodemon dist/app.js** pero para no estar haciendo la compilacion de tsc siempre, en otra consola vamos a poner **tsc --watch**, ahora vamos a poder tener separados los entornos de desarrollo y ver si el que fallo fue nodemon o fue typescript
 
+# Sequelize
+Practicamente es como mongoose, es un ORM y trabaja con las bases de datos relacionales
+
+
 
